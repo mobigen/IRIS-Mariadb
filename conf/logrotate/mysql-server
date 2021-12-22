@@ -1,6 +1,6 @@
 /var/log/mysql/* {
         missingok
-        create 640 mysql mysql
+        create 660 mysql mysql
         notifempty
         daily
         minsize 1M
@@ -11,6 +11,8 @@
         compress
         delaycompress
         sharedscripts
+        olddir archive/
+        createolddir 770 mysql mysql
     postrotate
         # just if mysqld is really running
         if test -x /usr/bin/mysqladmin && \
