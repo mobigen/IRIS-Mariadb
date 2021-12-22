@@ -8,8 +8,7 @@ $ ./build.sh
     -v version         빌드 버전 (default: v2.9.0)
     -r                 RC 버전을 빌드 (default: false)
     -o order           RC 버전을 빌드 할 때 오늘 몇 번째 빌드인지 정수(int) 입력 (default: 0)
-                       default: k8s (k8s|docker)
-
+    
 # Image tag를 입력해서 빌드를 한다.
 
 $ ./build.sh -v v2.1.0
