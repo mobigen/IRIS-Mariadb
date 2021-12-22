@@ -1,4 +1,4 @@
-FROM mariadb:10.5.9
+FROM mariadb:10.5.4
 
 RUN apt update && apt install -y logrotate
 
