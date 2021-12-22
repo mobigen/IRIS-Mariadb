@@ -38,3 +38,4 @@ thirdparty/
 unittest*/
 venv*/
 *.bck
+*.log
