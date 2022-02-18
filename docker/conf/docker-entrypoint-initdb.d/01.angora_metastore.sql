@@ -1,0 +1,62 @@
+CREATE DATABASE IF NOT EXISTS `angora_metastore` DEFAULT CHARACTER SET utf8;
+
+USE `angora_metastore`;
+
+CREATE TABLE `alembic_version` (
+  `version_num` varchar(32) NOT NULL,
+  PRIMARY KEY (`version_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `alembic_version` VALUES ('000003_import_data');
+
+CREATE TABLE `angora_datamodels` (
+  `NAME` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `DESCRIPTION` text COLLATE utf8_bin DEFAULT NULL,
+  `FIELDS` text COLLATE utf8_bin DEFAULT NULL,
+  `DATASET` text COLLATE utf8_bin DEFAULT NULL,
+  `SHARE` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  `USERID` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `GROUP_ID` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `ID` varchar(36) COLLATE utf8_bin NOT NULL,
+  `CDATE` varchar(14) COLLATE utf8_bin DEFAULT NULL,
+  `MDATE` varchar(14) COLLATE utf8_bin DEFAULT NULL,
+  `SCOPE` text COLLATE utf8_bin DEFAULT NULL,
+  `PARTITION_RANGE` int(11) DEFAULT NULL,
+  `CONNECTOR_ID` varchar(36) COLLATE utf8_bin DEFAULT NULL,
+  `REFERENCED_ID` varchar(36) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `uq_name_userid` (`NAME`,`USERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `angora_mlmodels` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `USER` text COLLATE utf8_bin NOT NULL,
+  `NAME` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `FILENAME` text COLLATE utf8_bin DEFAULT NULL,
+  `FORMAT` text COLLATE utf8_bin DEFAULT NULL,
+  `TYPE` text COLLATE utf8_bin DEFAULT NULL,
+  `CATEGORY` text COLLATE utf8_bin DEFAULT NULL,
+  `ALGORITHM` text COLLATE utf8_bin DEFAULT NULL,
+  `FEATURE` text COLLATE utf8_bin DEFAULT NULL,
+  `LABEL` text COLLATE utf8_bin DEFAULT NULL,
+  `PARAMETER` text COLLATE utf8_bin DEFAULT NULL,
+  `EVALUATION` text COLLATE utf8_bin DEFAULT NULL,
+  `CROSS_VALIDATION` text COLLATE utf8_bin DEFAULT NULL,
+  `GRID_INFO` text COLLATE utf8_bin DEFAULT NULL,
+  `TRAIN_CNT` text COLLATE utf8_bin DEFAULT NULL,
+  `ELAPSED` text COLLATE utf8_bin DEFAULT NULL,
+  `DICTIONARY` text COLLATE utf8_bin DEFAULT NULL,
+  `SERVING` text COLLATE utf8_bin DEFAULT NULL,
+  `SERVING_NAME` text COLLATE utf8_bin DEFAULT NULL,
+  `CREATE` text COLLATE utf8_bin DEFAULT NULL,
+  `MODIFIED` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `STATE` text COLLATE utf8_bin DEFAULT NULL,
+  `DATA_MODEL_NAME` text COLLATE utf8_bin DEFAULT NULL,
+  `QUERY` text COLLATE utf8_bin DEFAULT NULL,
+  `SHARE` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ix_ANGORA_MLMODELS_NAME` (`NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- Dump completed on 2020-12-22 15:01:07
